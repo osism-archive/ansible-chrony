@@ -1,7 +1,28 @@
 ---
-- name: Create dummy file
-  copy:
-    content: ""
-    dest: /tmp/dummy
-    force: no
-    mode: 0644
+- name: Install package
+  package:
+    name: "{{ chrony_package_name }}"
+    state: present
+  become: true
+
+- name: Start/enable chrony
+  service:
+    name: "{{ chrony_service_name }}"
+    state: started
+    enabled: yes
+  become: true
+
+- name: Check if configuration file exists
+  stat:
+    path: "{{ chrony_conf_file }}"
+  register: chrony_conf_check
+
+- name: Copy configuration file
+  template:
+    src: chrony.conf.j2
+    dest: "{{ chrony_conf_file }}"
+  when:
+    - chrony_conf_check.stat.exists
+  notify:
+    - Restart chrony service
+  become: true

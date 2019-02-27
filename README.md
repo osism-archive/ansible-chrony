@@ -4,7 +4,6 @@
 [![Ansible Galaxy](https://img.shields.io/badge/Ansible%20Galaxy-osism.chrony-blue.svg)](https://galaxy.ansible.com/osism/chrony/)
 ![Ansible 2.6](https://img.shields.io/badge/Ansible-2.6-green.png?style=flat)
 ![Ansible 2.7](https://img.shields.io/badge/Ansible-2.7-green.png?style=flat)
-![Ubuntu 16.04](https://img.shields.io/badge/Ubuntu-16.04-orange.png?style=flat)
 ![Ubuntu 18.04](https://img.shields.io/badge/Ubuntu-18.04-orange.png?style=flat)
 
 License
@@ -24,3 +23,8 @@ Author information
 ------------------
 
 This role was created by [Betacloud Solutions GmbH](https://betacloud-solutions.de).
+
+Notes
+-----
+
+This role is based on the role ``ansible-hardening`` (https://github.com/openstack/ansible-hardening).
