@@ -4,6 +4,9 @@ chrony_key_file: /etc/chrony/chrony.keys
 chrony_package_name: chrony
 chrony_service_name: chrony
 
+configuration_directory: /opt/configuration
+chrony_local_conf_template: "{{ configuration_directory }}/environments/generic/templates/chrony.conf.j2"
+
 # Use the following NTP servers.
 chrony_servers:
   - 0.de.pool.ntp.org

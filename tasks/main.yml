@@ -19,10 +19,13 @@
 
 - name: Copy configuration file
   template:
-    src: chrony.conf.j2
+    src: "{{ item }}"
     dest: "{{ chrony_conf_file }}"
   when:
     - chrony_conf_check.stat.exists
+  with_first_found:
+    - "{{ chrony_conf_template }}"
+    - chrony.conf.j2
   notify:
     - Restart chrony service
   become: true
