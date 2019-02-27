@@ -1,0 +1,29 @@
+---
+language: python
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_854ffc8c95fe_key -iv $encrypted_854ffc8c95fe_iv -in molecule/default/clouds.yml.enc -out molecule/default/clouds.yml -d
+
+install:
+  - pip install -r requirements.txt
+
+env:
+  - TOX_ENV=ansible26-xenial
+  - TOX_ENV=ansible26-bionic
+  - TOX_ENV=ansible27-xenial
+  - TOX_ENV=ansible27-bionic
+
+script:
+  - tox -e $TOX_ENV
+
+notifications:
+  irc:
+    channels:
+      - "irc.freenode.org#osism"
+    template:
+      - "%{result} %{repository_slug}: %{commit_subject} %{build_url}"
+    skip_join: true

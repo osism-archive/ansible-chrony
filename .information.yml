@@ -1,0 +1,3 @@
+---
+ansible_role_name: chrony
+travis_decrypt_key: 854ffc8c95fe

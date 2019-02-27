@@ -1,0 +1,6 @@
+---
+- name: Playbook for role preparations
+  hosts: all
+
+  roles: []
+  tasks: []
