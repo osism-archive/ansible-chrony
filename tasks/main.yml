@@ -1,4 +1,16 @@
 ---
+- name: Disable timesyncd
+  command: timedatectl set-ntp false
+  become: true
+  changed_when: false
+
+- name: Stop/disable timesyncd service
+  service:
+    name: systemd-timesyncd
+    state: stopped
+    enabled: no
+  become: true
+
 - name: Install package
   package:
     name: "{{ chrony_package_name }}"
