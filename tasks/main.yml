@@ -1,9 +1,4 @@
 ---
-- name: Disable timesyncd
-  command: timedatectl set-ntp false
-  become: true
-  changed_when: false
-
 - name: Stop/disable timesyncd service
   service:
     name: systemd-timesyncd
